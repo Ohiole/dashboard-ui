@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    li.icons{
+        @apply cursor-pointer p-[4px] duration-300 relative
+    }
+}
