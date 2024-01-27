@@ -9,7 +9,10 @@ module.exports = {
         'sidebarBg': '#F7F8FA',
         'sidebarBgDark': '#1D2330',
         'main': '#34CAA5',
-        'navRight': '#0D062D'
+        'navRight': '#0D062D',
+        'bodyBg': '#FAFAFA',
+        'borderColor': '#EBECF2',
+        'text': '#26282C'
       }
     },
   },

@@ -2,6 +2,7 @@ import './App.css';
 import { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import { ShareContext } from './context/ShareContext';
+import Body from './Page/Body';
 
 function App() {
   const [display, setDisplay] = useState(false)
@@ -10,6 +11,7 @@ function App() {
     <div className="App flex">
       <ShareContext.Provider value={{display, setDisplay}}>
         <Sidebar />
+        <Body />
       </ShareContext.Provider>
     </div>
   );
