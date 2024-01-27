@@ -4,10 +4,14 @@
 
 @layer base {
     li.icons{
-        @apply cursor-pointer p-[4px] duration-300 relative
+        @apply w-full flex items-center justify-center cursor-pointer p-[4px] duration-300 relative
     }
 
-    li.icons div{
-        @apply
+    /* li.icons div{
+        @apply h-0 w-1 bg-navRight absolute right-0 rounded-l-lg duration-200 
+    } */
+
+    li.icons.active div{
+        @apply h-5
     }
 }
