@@ -10,7 +10,7 @@ function Sidebar() {
     // console.log(display);
 
   return (
-    <section className={`${display ? 'bg-sidebarBgDark' : 'bg-sidebarBg' } w-[80px] flex flex-col justify-between h-screen items-center py-[20px] sticky left-0 top-0 duration-300 border-r-2 border-borderColor`}>
+    <section className={`${display ? 'bg-sidebarBgDark' : 'bg-sidebarBg' } w-[80px] flex flex-col justify-between h-screen items-center py-[20px] sticky left-0 top-0 duration-300 border-r-2 ${ display ? 'border-borderColorDark' : 'border-borderColor'}`}>
         <section className='w-full'>
             <nav className='w-full'>
                 <ul className='flex flex-col items-center gap-[16px] w-full'>

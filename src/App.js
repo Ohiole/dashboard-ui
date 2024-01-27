@@ -8,7 +8,7 @@ function App() {
   const [display, setDisplay] = useState(false)
 
   return (
-    <div className="App flex">
+    <div className="App flex text-sans">
       <ShareContext.Provider value={{display, setDisplay}}>
         <Sidebar />
         <Body />
