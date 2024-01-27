@@ -1,18 +1,16 @@
 import './App.css';
-// import { useState } from 'react';
+import { useState } from 'react';
 import Sidebar from './components/Sidebar';
+import { ShareContext } from './context/ShareContext';
 
 function App() {
-  // const [display, setDisplay] = useState({
-  //   sidebar: 'bg-sidebarBg',
-  //   nav: '#B2ABAB',
-  //   category: '#0D062D',
-
-  // })
+  const [display, setDisplay] = useState(false)
 
   return (
     <div className="App flex">
-      <Sidebar />
+      <ShareContext.Provider value={{display, setDisplay}}>
+        <Sidebar />
+      </ShareContext.Provider>
     </div>
   );
 }
