@@ -39,6 +39,8 @@
     ]
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.1"
+    "@iconify/json": "^2.2.179",
+    "tailwindcss": "^3.4.1",
+    "unplugin-icons": "^0.18.3"
   }
 }

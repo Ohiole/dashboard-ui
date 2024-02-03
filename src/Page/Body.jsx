@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Header from '../components/Header'
+import Card from '../components/Card'
 import ReactApexChart from 'react-apexcharts'
 import { ShareContext } from '../context/ShareContext'
 import { ArrowDown2 } from 'iconsax-react'
@@ -52,6 +53,14 @@ function Body() {
             borderRadiusApplication: 'end',
           }
         },
+        states: {
+          hover: {
+            filter: {
+                type: 'lighten',
+                value: 0.1,
+            }
+          },
+        },
         fill: {
           colors: ['#34CAA5'],
           type: "gradient",
@@ -62,8 +71,8 @@ function Body() {
             gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
             inverseColors: true,
             opacityFrom: 1,
-            opacityTo: 0.5,
-            stops: [0, 90, 100],
+            opacityTo: 0.3,
+            stops: [0, 70, 100],
             colorStops: []
           }
         },
@@ -109,7 +118,10 @@ function Body() {
               />
             </div>
             <div>
-
+              <Card card='order'/>
+              <Card card='refund' />
+              <Card card='sales' />
+              <Card card='income' />
             </div>
           </div>
           <div>
