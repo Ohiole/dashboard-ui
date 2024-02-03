@@ -32,7 +32,7 @@ function Body() {
               fontSize: '14px',
               fontFamily: 'Plus Jakarta Sans'
             }
-          }
+          },
         },
         yaxis: {
           labels: {
@@ -41,7 +41,7 @@ function Body() {
               fontSize: '14px',
               fontFamily: 'Plus Jakarta Sans'
             }
-          }
+          },
         },
         dataLabels: {
           enabled: false
