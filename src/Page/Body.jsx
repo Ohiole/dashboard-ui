@@ -1,27 +1,86 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Header from '../components/Header'
 import ReactApexChart from 'react-apexcharts'
 import { ShareContext } from '../context/ShareContext'
 import { ArrowDown2 } from 'iconsax-react'
 
 function Body() {
-
     const { display } = useContext(ShareContext)
+
+    const [chartTextColor, setChartTextColor] = useState('#525252')
+
+    
+    useEffect(() => {
+      if (display) {
+        setChartTextColor('#FFF')
+      } else {
+        setChartTextColor('#525252')
+      }
+    }, [display])
 
     const chartData = {
       options: {
         chart: {
-          id: "basic-bar"
+          id: 'custom-bar-chart',
+          type: 'bar',
         },
         xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
+          labels: {
+            style: {
+              colors: chartTextColor,
+              fontSize: '14px',
+              fontFamily: 'Plus Jakarta Sans'
+            }
+          }
+        },
+        yaxis: {
+          labels: {
+            style: {
+              colors: chartTextColor,
+              fontSize: '14px',
+              fontFamily: 'Plus Jakarta Sans'
+            }
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 15,
+            borderRadiusApplication: 'end',
+          }
+        },
+        fill: {
+          colors: ['#34CAA5'],
+          type: "gradient",
+          gradient: {
+            shade: 'light',
+            type: "vertical",
+            shadeIntensity: 0.5,
+            gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
+            inverseColors: true,
+            opacityFrom: 1,
+            opacityTo: 0.5,
+            stops: [0, 90, 100],
+            colorStops: []
+          }
+        },
+        tooltip: {
+          theme:  display ? 'light' : 'dark' ,
+          custom: function({series, seriesIndex, dataPointIndex, w}) {
+            return '<div class="arrow_box p-2">' +
+              '<span>$' + series[seriesIndex][dataPointIndex] + '</span>' +
+              '</div>'
+          }        
         }
       },
       series: [
         {
-          name: "series-1",
-          data: [30, 40, 45, 50, 49, 60, 70, 91]
-        }
+          name: 'series-1',
+          data: [8000, 18000, 3500, 28000, 9000, 45000, 9000, 20000, 32000, 4000, 30000, 26000],
+        },
       ],
     };
 
@@ -45,7 +104,8 @@ function Body() {
                 options={chartData.options}
                 series={chartData.series}
                 type="bar"
-                width="500"
+                width="600"
+                className='cursor-pointer'
               />
             </div>
             <div>
