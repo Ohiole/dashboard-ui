@@ -49,7 +49,7 @@ function Body() {
         },
         plotOptions: {
           bar: {
-            borderRadius: 15,
+            borderRadius: 20,
             borderRadiusApplication: 'end',
           }
         },
@@ -94,18 +94,18 @@ function Body() {
     };
 
   return (
-    <section className={`w-full ${ display ? 'bg-bodyBgDark' :'bg-bodyBg'} duration-300`}>
+    <section className={`w-full ${ display ? 'bg-bodyBgDark text-white' :'bg-bodyBg text-bodyBgDark'} duration-300`}>
         <Header />
-        <div>
-          <div>
-            <div>
-              <div>
-                <h2>Sales Trends</h2>
-                <div>
-                  <p>Short by:</p>
-                  <div>
-                    <p>Weekly</p>
-                    <ArrowDown2 size='18' color='#78828A' />
+        <div className='w-full'>
+          <div className='flex w-full p-4 gap-2'>
+            <div className='w-7/12'>
+              <div className='w-full flex justify-between'>
+                <h2 className='text-[20px] font-extrabold'>Sales Trends</h2>
+                <div className='flex gap-4 items-center'>
+                  <p className={`text-[14px] font-medium ${ display ? 'text-white' : 'text-[#3A3F51]'}`}>Short by:</p>
+                  <div className={`flex items-center cursor-pointer border-2 ${display ? 'border-borderColorDark' : 'border-borderColor'} p-2 rounded-full cursor-pointer gap-2`}>
+                    <p className={`text-[12px] ${ display ? 'text-white' : 'text-[#3A3F51]'}`}>Weekly</p>
+                    <ArrowDown2 size='14' color='#78828A' />
                   </div>
                 </div>
               </div>
@@ -113,11 +113,11 @@ function Body() {
                 options={chartData.options}
                 series={chartData.series}
                 type="bar"
-                width="600"
-                className='cursor-pointer'
+                height="350"
+                className='cursor-pointer w-full'
               />
             </div>
-            <div>
+            <div className='grid grid-cols-2 gap-2 w-5/12'>
               <Card card='order'/>
               <Card card='refund' />
               <Card card='sales' />

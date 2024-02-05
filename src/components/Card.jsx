@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Green from '../assets/green-vector.png'
 import { BoxTick, I3DRotate, ShoppingCart, Coin } from 'iconsax-react'
 import TrendingUp from '../assets/trending-up.png'
 import TrendDown from '../assets/trending-down.png'
 import Red from '../assets/red-vector.png'
+import { ShareContext } from '../context/ShareContext'
 
 
 function Card({card}) {
+
+    const { display } = useContext(ShareContext)
 
     const [cardState, setCardState] = useState({
         'title': '',
@@ -56,9 +59,9 @@ function Card({card}) {
 
 
   return (
-    <div>
-        <div>
-            <div>
+    <div className={`${display ? 'bg-sidebarBgDark border-borderColorDark' : 'bg-white border-borderColor'} border-2 rounded-lg p-4`}>
+        <div className='flex items-center justify-between'>
+            <div className={`w-[40px] h-[40px] rounded-full border-2 flex items-center justify-center ${display ? 'border-borderColorDark': 'border-borderColor'}`}>
                 {
                     cardState.icon === BoxTick ? <BoxTick size='24' color='#34CAA5' variant='Bulk' /> :
                     cardState.icon === I3DRotate ? <I3DRotate size='24' color='#34CAA5' variant='Bulk' />:
@@ -68,9 +71,9 @@ function Card({card}) {
             </div>
             <img src={cardState.vector === 'green' ? Green : cardState.vector === 'red' ? Red : ''} alt="Vector" />
         </div>
-        <div>
+        <div className='mt-3'>
             <h2>{cardState.title}</h2>
-            <h2>{cardState.num}</h2>
+            <h2 className={`mt-1`}>{cardState.num}</h2>
         </div>
         <div>
             <div>
