@@ -21,7 +21,7 @@ function Card({card}) {
     useEffect(() => {
         switch (card) {
             case 'order':
-                setCardState({...cardState, 
+                setCardState({ 
                     'title': 'Total Order',
                     'vector': 'green',
                     'num': '350',
@@ -29,7 +29,7 @@ function Card({card}) {
                 })
                 break;
             case 'refund': 
-                setCardState({...cardState, 
+                setCardState({ 
                     'title': 'Total Refund',
                     'vector': 'red',
                     'num': '270',
@@ -37,7 +37,7 @@ function Card({card}) {
                 })
                 break;
             case 'sales': 
-                setCardState({...cardState, 
+                setCardState({ 
                     'title': 'Average Sales',
                     'vector': 'red',
                     'num': '1567',
@@ -45,17 +45,17 @@ function Card({card}) {
                 })
                 break;
             case 'income': 
-                setCardState({...cardState, 
+                setCardState({ 
                     'title': 'Total Income',
                     'vector': 'green',
                     'num': '$350.000',
                     'icon': Coin
                 })
                 break;
-            default:  setCardState({...cardState})
+            default:  setCardState({  })
                 break;
         }
-    }, [cardState, card])
+    }, [card])
 
 
   return (
@@ -72,15 +72,15 @@ function Card({card}) {
             <img src={cardState.vector === 'green' ? Green : cardState.vector === 'red' ? Red : ''} alt="Vector" />
         </div>
         <div className='mt-3'>
-            <h2>{cardState.title}</h2>
-            <h2 className={`mt-1`}>{cardState.num}</h2>
+            <h2 className='text-[18px] text-[#898989]'>{cardState.title}</h2>
+            <h2 className={`font-bold ${ display ? 'text-white' : 'text-[#3A3F51]' } text-[24px]`}>{cardState.num}</h2>
         </div>
-        <div>
-            <div>
+        <div className='flex gap-2 items-center mt-3'>
+            <div className={`flex gap-1 justify-between items-center ${cardState.vector === 'green' ? 'bg-main/15 text-main' : 'bg-[#ED544E]/15 text-[#ED544E]'} p-1 rounded-full`}>
                 <img src={ cardState.vector === 'green' ? TrendingUp : cardState.vector === 'red' ? TrendDown : ''} alt="Trend" />
-                <p>23,5%</p>
+                <p className='text-[12px] font-semibold'>23,5%</p>
             </div>
-            <p>vs. previous month</p>
+            <p className='text-[14px] text-[#606060]'>vs. previous month</p>
         </div>
     </div>
   )
