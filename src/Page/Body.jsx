@@ -3,12 +3,19 @@ import Header from '../components/Header'
 import Card from '../components/Card'
 import ReactApexChart from 'react-apexcharts'
 import { ShareContext } from '../context/ShareContext'
-import { ArrowDown2 } from 'iconsax-react'
+import { ArrowDown2, ArrowUp2 } from 'iconsax-react'
 
 function Body() {
     const { display } = useContext(ShareContext)
 
     const [chartTextColor, setChartTextColor] = useState('#525252')
+
+    const [chartSpec, setChartSpec] = useState('Monthly')
+
+    const [chartInfo, setChartInfo] = useState({
+      'categories': ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
+      'seriesData': [8000, 18000, 3500, 28000, 9000, 45000, 9000, 20000, 32000, 4000, 30000, 26000],
+    })
 
     
     useEffect(() => {
@@ -19,6 +26,37 @@ function Body() {
       }
     }, [display])
 
+    useEffect(() => {
+      switch (chartSpec) {
+        case 'Weekly':
+          setChartInfo({...chartInfo, 
+            'categories': ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Week 8', 'Week 9', 'Week 10'],
+            'seriesData': [600, 2200, 150, 1900, 700, 3600, 900, 3000, 4500, 500]
+          })
+          break;
+        case 'Daily':
+          setChartInfo({...chartInfo, 
+            'categories': ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
+            'seriesData': [20000, 32000, 4000, 30000, 26000, 45000, 9000, ]
+          })
+          break;
+        case 'Yearly':
+          setChartInfo({...chartInfo, 
+            'categories': [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
+            'seriesData': [400000, 3000000, 2600000, 4500000, 900000, 2000000, 3200000, 400000, 3000000, 2600000, 4500000, 900000, 2000000, 3200000, 400000]
+          })
+          break;
+        default:
+          setChartInfo({...chartInfo, 
+            'categories': ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
+            'seriesData': [8000, 18000, 3500, 28000, 9000, 45000, 9000, 20000, 32000, 4000, 30000, 26000]
+          })
+          break;
+      }
+    }, [chartSpec, chartInfo])
+
+    const [isToggleOpen, setIsToggleOpen] = useState(false)
+
     const chartData = {
       options: {
         chart: {
@@ -26,7 +64,7 @@ function Body() {
           type: 'bar',
         },
         xaxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
+          categories: chartInfo.categories,
           labels: {
             style: {
               colors: chartTextColor,
@@ -49,7 +87,7 @@ function Body() {
         },
         plotOptions: {
           bar: {
-            borderRadius: 22,
+            borderRadius: chartSpec === 'Daily' ? 40 : chartSpec === 'Weekly' ? 30 : chartSpec === 'Yearly' ? 20 : 22,
             borderRadiusApplication: 'end',
           }
         },
@@ -88,10 +126,31 @@ function Body() {
       series: [
         {
           name: 'series-1',
-          data: [8000, 18000, 3500, 28000, 9000, 45000, 9000, 20000, 32000, 4000, 30000, 26000],
+          data: chartInfo.seriesData,
         },
       ],
     };
+
+    const monthly = () => {
+      setIsToggleOpen(false)
+      setChartSpec('Monthly')
+    }
+
+    const daily = () => {
+      setIsToggleOpen(false)
+      setChartSpec('Daily')
+    }
+
+    const weekly = () => {
+      setIsToggleOpen(false)
+      setChartSpec('Weekly')
+    }
+
+    const yearly = () => {
+      setIsToggleOpen(false)
+      setChartSpec('Yearly')
+    }
+    
 
   return (
     <section className={`w-full ${ display ? 'bg-bodyBgDark text-white' :'bg-bodyBg text-bodyBgDark'} duration-300`}>
@@ -103,9 +162,17 @@ function Body() {
                 <h2 className='text-[20px] font-extrabold'>Sales Trends</h2>
                 <div className='flex gap-4 items-center'>
                   <p className={`text-[14px] font-medium ${ display ? 'text-white' : 'text-[#3A3F51]'}`}>Short by:</p>
-                  <div className={`flex items-center cursor-pointer border-2 ${display ? 'border-borderColorDark' : 'border-borderColor'} p-2 rounded-full cursor-pointer gap-2`}>
-                    <p className={`text-[12px] ${ display ? 'text-white' : 'text-[#3A3F51]'}`}>Weekly</p>
-                    <ArrowDown2 size='14' color='#78828A' />
+                  <div className={`flex items-center cursor-pointer border-2 ${display ? 'border-borderColorDark text-white' : 'border-borderColor text-[#3A3F51]'} text-[12px] p-2 rounded-full cursor-pointer gap-2 relative`} onClick={() => setIsToggleOpen(!isToggleOpen)}>
+                    <p>{chartSpec}</p>
+                    {
+                      isToggleOpen ?  <ArrowUp2 size='14' color='#78828A' /> : <ArrowDown2 size='14' color='#78828A' />
+                    }
+                    <ul className={`w-[120px] p-2 ${ display ? 'bg-sidebarBgDark': 'bg-sidebarBg' } shadow-md absolute top-10 right-2 z-30 flex flex-col gap-3 ${ isToggleOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0' }`}>
+                      <li className='w-full hover:text-underline hover:underline-offset-1 hover:text-main duration-100' onClick={() => daily()}>Daily</li>
+                      <li className='w-full hover:text-underline hover:underline-offset-1 hover:text-main duration-100' onClick={() => weekly()}>Weekly</li>
+                      <li className='w-full hover:text-underline hover:underline-offset-1 hover:text-main duration-100' onClick={() => monthly()}>Monthly</li>
+                      <li className='w-full hover:text-underline hover:underline-offset-1 hover:text-main duration-100' onClick={() => yearly()}>Yearly</li>
+                    </ul>
                   </div>
                 </div>
               </div>
