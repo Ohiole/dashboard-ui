@@ -7,9 +7,15 @@ import Body from './Page/Body';
 function App() {
   const [display, setDisplay] = useState(false)
 
+  const [openTable, setOpenTable] = useState(false)
+
+  const [invoice, setInvoice] = useState({})
+
+  const [showInv, setShowInv] = useState(false)
+
   return (
     <div className="App flex text-sans">
-      <ShareContext.Provider value={{display, setDisplay}}>
+      <ShareContext.Provider value={{display, setDisplay, openTable, setOpenTable, invoice, setInvoice, showInv, setShowInv}}>
         <Sidebar />
         <Body />
       </ShareContext.Provider>

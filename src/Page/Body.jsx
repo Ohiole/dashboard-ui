@@ -5,9 +5,10 @@ import ReactApexChart from 'react-apexcharts'
 import { ShareContext } from '../context/ShareContext'
 import { ArrowDown2, ArrowUp2 } from 'iconsax-react'
 import Table from '../components/Table'
+import Invoice from '../components/Invoice'
 
 function Body() {
-    const { display } = useContext(ShareContext)
+    const { display, openTable, showInv } = useContext(ShareContext)
 
     const [chartTextColor, setChartTextColor] = useState('#525252')
 
@@ -17,7 +18,6 @@ function Body() {
       'categories': ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
       'seriesData': [8000, 18000, 3500, 28000, 9000, 45000, 9000, 20000, 32000, 4000, 30000, 26000],
     })
-
     
     useEffect(() => {
       if (display) {
@@ -38,7 +38,7 @@ function Body() {
         case 'Daily':
           setChartInfo({ 
             'categories': ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
-            'seriesData': [20000, 32000, 4000, 30000, 26000, 45000, 9000, ]
+            'seriesData': [20, 32, 4, 30, 26, 45, 90, ]
           })
           break;
         case 'Yearly':
@@ -151,10 +151,113 @@ function Body() {
       setIsToggleOpen(false)
       setChartSpec('Yearly')
     }
+
+    const tableData = [
+      {
+          'pic': 'https://images.pexels.com/photos/39866/entrepreneur-startup-start-up-man-39866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          'name': 'Marcus Bergson',
+          'date': 'Nov 15, 2023',
+          'amt': 80000,
+          'status': true,
+      },
+      {
+          'pic': 'https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          'name': 'Jaydon Vaccaro',
+          'date': 'Nov 15, 2023',
+          'amt': 150000,
+          'status': false,
+      },
+      {
+          'pic': 'https://images.pexels.com/photos/1848565/pexels-photo-1848565.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          'name': 'Corey Schleifer',
+          'date': 'Nov 14, 2023',
+          'amt': 87000,
+          'status': true,
+      },
+      {
+          'pic': 'https://images.pexels.com/photos/1405963/pexels-photo-1405963.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          'name': 'Cooper Press',
+          'date': 'Nov 14, 2023',
+          'amt': 100000,
+          'status': false,
+      },
+      {
+          'pic': 'https://images.pexels.com/photos/1181391/pexels-photo-1181391.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          'name': 'Phillip Lubin',
+          'date': 'Nov 13, 2023',
+          'amt': 78000,
+          'status': true,
+      },
+      {
+          pic: 'https://images.pexels.com/photos/1820919/pexels-photo-1820919.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          name: 'Elena Rodriguez',
+          date: 'Dec 5, 2023',
+          amt: 65000,
+          status: false,
+        },
+        {
+          pic: 'https://images.pexels.com/photos/936043/pexels-photo-936043.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          name: 'Alexandre Moreau',
+          date: 'Oct 21, 2023',
+          amt: 120000,
+          status: true,
+        },
+        {
+          pic: 'https://images.pexels.com/photos/5480715/pexels-photo-5480715.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          name: 'Sophie Williams',
+          date: 'Jan 8, 2024',
+          amt: 95000,
+          status: false,
+        },
+        {
+          pic: 'https://images.pexels.com/photos/2033447/pexels-photo-2033447.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          name: 'David Smith',
+          date: 'Feb 17, 2024',
+          amt: 110000,
+          status: true,
+        },
+        {
+          pic: 'https://images.pexels.com/photos/3031396/pexels-photo-3031396.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          name: 'Aya Takahashi',
+          date: 'Mar 30, 2024',
+          amt: 75000,
+          status: false,
+        },
+        {
+          pic: 'https://images.pexels.com/photos/718978/pexels-photo-718978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          name: 'Jackson Lee',
+          date: 'Apr 12, 2024',
+          amt: 88000,
+          status: true,
+        },
+        {
+          pic: 'https://images.pexels.com/photos/1139243/pexels-photo-1139243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          name: 'Maria Gonzalez',
+          date: 'May 5, 2024',
+          amt: 70000,
+          status: false,
+        },
+        {
+          pic: 'https://images.pexels.com/photos/175696/pexels-photo-175696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          name: 'Benjamin Kim',
+          date: 'Jun 20, 2024',
+          amt: 105000,
+          status: true,
+        },
+        {
+          pic: 'https://images.pexels.com/photos/3290250/pexels-photo-3290250.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          name: 'Emma Miller',
+          date: 'Jul 7, 2024',
+          amt: 92000,
+          status: false,
+        },
+  ]
+
+  const shortTable = tableData.slice(0, 5)
     
 
   return (
-    <section className={`w-full ${ display ? 'bg-bodyBgDark text-white' :'bg-bodyBg text-bodyBgDark'} duration-300`}>
+    <section className={`w-full ${ display ? 'bg-bodyBgDark text-white' :'bg-bodyBg text-bodyBgDark'} duration-300 ${openTable ? 'h-screen overflow-hidden' : 'h-auto overflow-auto'}`}>
         <Header />
         <div className='w-full'>
           <div className='flex flex-col w-full p-4 gap-4 xl:flex-row'>
@@ -193,11 +296,17 @@ function Body() {
             </div>
           </div>
           <div className='flex flex-col w-full p-4 gap-4 xl:flex-row'>
-            <Table />
+            <Table table={shortTable} isPop={false}/>
             <div>
 
             </div>
           </div>
+        </div>
+        <div className={`w-full fixed h-screen top-0 left-0 bg-black/25 flex items-center justify-center z-40 ${openTable ? 'scale-100' : 'scale-0'} duration-200`}>
+          <Table table={tableData} isPop={true}/>
+        </div>
+        <div className={`w-full fixed h-screen top-0 left-0 bg-black/25 flex items-center justify-center z-40 duration-200 ${showInv ? 'scale-100' : 'scale-0'}`}>
+          <Invoice />
         </div>
     </section>
   )
