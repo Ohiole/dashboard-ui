@@ -4,6 +4,7 @@ import Card from '../components/Card'
 import ReactApexChart from 'react-apexcharts'
 import { ShareContext } from '../context/ShareContext'
 import { ArrowDown2, ArrowUp2 } from 'iconsax-react'
+import Table from '../components/Table'
 
 function Body() {
     const { display } = useContext(ShareContext)
@@ -29,31 +30,31 @@ function Body() {
     useEffect(() => {
       switch (chartSpec) {
         case 'Weekly':
-          setChartInfo({...chartInfo, 
+          setChartInfo({ 
             'categories': ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Week 8', 'Week 9', 'Week 10'],
             'seriesData': [600, 2200, 150, 1900, 700, 3600, 900, 3000, 4500, 500]
           })
           break;
         case 'Daily':
-          setChartInfo({...chartInfo, 
+          setChartInfo({ 
             'categories': ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
             'seriesData': [20000, 32000, 4000, 30000, 26000, 45000, 9000, ]
           })
           break;
         case 'Yearly':
-          setChartInfo({...chartInfo, 
+          setChartInfo({ 
             'categories': [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
             'seriesData': [400000, 3000000, 2600000, 4500000, 900000, 2000000, 3200000, 400000, 3000000, 2600000, 4500000, 900000, 2000000, 3200000, 400000]
           })
           break;
         default:
-          setChartInfo({...chartInfo, 
+          setChartInfo({ 
             'categories': ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
             'seriesData': [8000, 18000, 3500, 28000, 9000, 45000, 9000, 20000, 32000, 4000, 30000, 26000]
           })
           break;
       }
-    }, [chartSpec, chartInfo])
+    }, [chartSpec])
 
     const [isToggleOpen, setIsToggleOpen] = useState(false)
 
@@ -191,10 +192,8 @@ function Body() {
               <Card card='income' />
             </div>
           </div>
-          <div>
-            <div>
-
-            </div>
+          <div className='flex flex-col w-full p-4 gap-4 xl:flex-row'>
+            <Table />
             <div>
 
             </div>

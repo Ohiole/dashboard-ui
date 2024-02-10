@@ -34,7 +34,7 @@ function Header() {
         <section className={`flex flex-col lg:flex-row items-start lg:py-0 py-16 lg:px-0 md:px-8 px-2 lg:items-center gap-5 absolute lg:relative h-screen lg:h-auto ${display ? 'bg-sidebarBgDark border-borderColorDark': 'bg-sidebarBg border-borderColor'} border-l-2 lg:border-l-0 lg:bg-transparent right-0 top-0 ${ nav ? 'md:w-1/2 w-full opacity-100 pointer-events-auto' : 'w-0 overflow-hidden lg:opacity-100 opacity-0 pointer-events-none'} lg:w-auto duration-300`}>
           <div className={`flex gap-2 w-full lg:w-[300px] border-2 ${ display ? 'border-borderColorDark' : 'border-borderColor'} p-[10px] rounded-3xl items-center`}>
             <SearchNormal1 color='#78828A' variant='Broken' size='18'/>
-            <input type="text" placeholder='Search...' className={`bg-transparent outline-none w-full ${ display ? 'text-white' : 'text-text' }`}/>
+            <input type="text" placeholder='Search...' className={`bg-transparent outline-none w-full ${ display ? 'text-white' : 'text-text' }`} id='search'/>
           </div>
           <div className='flex lg:flex-row flex-col items-start lg:items-center gap-[20px] lg:w-auto w-full'>
             <div className='flex items-center gap-3 cursor-pointer'>
