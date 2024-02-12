@@ -337,7 +337,7 @@ function Body() {
         <Header />
         <div className='w-full'>
           <div className='flex flex-col w-full p-4 gap-4 xl:flex-row'>
-            <div className={`w-full lg:w-[65%] overflow-x-auto ${display ? 'bg-sidebarBgDark border-borderColorDark' : 'bg-white border-borderColor'} p-2 border-2 rounded-md`}>
+            <div className={`w-full xl:w-[65%] overflow-x-auto ${display ? 'bg-sidebarBgDark border-borderColorDark' : 'bg-white border-borderColor'} p-2 border-2 rounded-md`}>
               <div className='w-full flex justify-between'>
                 <h2 className='text-[20px] font-extrabold'>Sales Trends</h2>
                 <div className='flex gap-4 items-center'>
@@ -364,14 +364,14 @@ function Body() {
                 className='cursor-pointer w-full'
               />
             </div>
-            <div className='grid grid-cols-2 gap-4 w-full lg:w-[35%]'>
+            <div className='grid grid-cols-2 gap-4 w-full xl:w-[35%]'>
               <Card card='order'/>
               <Card card='refund' />
               <Card card='sales' />
               <Card card='income' />
             </div>
           </div>
-          <div className='flex flex-col w-full p-4 gap-4 xl:flex-row'>
+          <div className='flex flex-col w-full p-4 gap-4 lg:flex-row'>
             <Table table={shortTable} isPop={false}/>
             <Platform isPop={false} platform={platforms} />
           </div>
