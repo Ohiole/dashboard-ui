@@ -12,10 +12,12 @@ function App() {
   const [invoice, setInvoice] = useState({})
 
   const [showInv, setShowInv] = useState(false)
+  
+  const [showPlatforms, setShowPlatforms] = useState(false)
 
   return (
     <div className="App flex text-sans">
-      <ShareContext.Provider value={{display, setDisplay, openTable, setOpenTable, invoice, setInvoice, showInv, setShowInv}}>
+      <ShareContext.Provider value={{display, setDisplay, openTable, setOpenTable, invoice, setInvoice, showInv, setShowInv, showPlatforms, setShowPlatforms}}>
         <Sidebar />
         <Body />
       </ShareContext.Provider>

@@ -6,9 +6,10 @@ import { ShareContext } from '../context/ShareContext'
 import { ArrowDown2, ArrowUp2 } from 'iconsax-react'
 import Table from '../components/Table'
 import Invoice from '../components/Invoice'
+import Platform from '../components/Platform'
 
 function Body() {
-    const { display, openTable, showInv } = useContext(ShareContext)
+    const { display, openTable, showInv, showPlatforms } = useContext(ShareContext)
 
     const [chartTextColor, setChartTextColor] = useState('#525252')
 
@@ -253,11 +254,86 @@ function Body() {
         },
   ]
 
+  const topPlatforms = [
+    {
+        title: 'Book Bazaar',
+        color: 'bg-[#6160DC]',
+        price: '2,500,000',
+        percent: 15,
+        width: 'w-1/2'
+    },
+    {
+        title: 'Artisan Aisle',
+        color: 'bg-[#54C5EB]',
+        price: '1,800,000',
+        percent: 10,
+        width: 'w-5/12'
+    },
+    {
+        title: 'Toy Troop',
+        color: 'bg-[#FFB74A]',
+        price: '1,200,000',
+        percent: 8,
+        width: 'w-1/3'
+    },
+    {
+        title: 'XStore',
+        color: 'bg-[#FF4A55]',
+        price: '600,000',
+        percent: 5,
+        width: 'w-1/4'
+    },
+    {
+      title: 'Tech Trends',
+      color: 'bg-[#34CAA5]',
+      price: '1,800,000',
+      percent: 10,
+      width: 'w-7/12'
+    },
+    {
+      title: 'Fashion Frenzy',
+      color: 'bg-[#F56A79]',
+      price: '1,200,000',
+      percent: 8,
+      width: 'w-3/4'
+    },
+    {
+      title: 'Foodie Delight',
+      color: 'bg-[#FFD700]',
+      price: '1,000,000',
+      percent: 12,
+      width: 'w-2/12'
+    },
+    {
+      title: 'Health Haven',
+      color: 'bg-[#5E8A7E]',
+      price: '900,000',
+      percent: 7,
+      width: 'w-1/3'
+    },
+    {
+      title: 'Adventure Awaits',
+      color: 'bg-[#DAA520]',
+      price: '1,500,000',
+      percent: 18,
+      width: 'w-1/2'
+    },
+    {
+      title: 'Artistic Impressions',
+      color: 'bg-[#C71585]',
+      price: '1,300,000',
+      percent: 14,
+      width: 'w-9/12'
+    },
+]
+
   const shortTable = tableData.slice(0, 5)
+
+  const platforms = topPlatforms.slice(0, 5)
     
 
   return (
-    <section className={`w-full ${ display ? 'bg-bodyBgDark text-white' :'bg-bodyBg text-bodyBgDark'} duration-300 ${openTable ? 'h-screen overflow-hidden' : 'h-auto overflow-auto'}`}>
+    <section className={`w-full ${ display ? 'bg-bodyBgDark text-white' :'bg-bodyBg text-bodyBgDark'} duration-300 ${(openTable || showInv || showPlatforms) ? 'h-screen overflow-hidden' : 'h-auto overflow-auto'}`}>
         <Header />
         <div className='w-full'>
           <div className='flex flex-col w-full p-4 gap-4 xl:flex-row'>
@@ -288,7 +364,7 @@ function Body() {
                 className='cursor-pointer w-full'
               />
             </div>
-            <div className='grid grid-cols-2 gap-4 w-full xl:w-[35%]'>
+            <div className='grid grid-cols-2 gap-4 w-full lg:w-[35%]'>
               <Card card='order'/>
               <Card card='refund' />
               <Card card='sales' />
@@ -297,9 +373,7 @@ function Body() {
           </div>
           <div className='flex flex-col w-full p-4 gap-4 xl:flex-row'>
             <Table table={shortTable} isPop={false}/>
-            <div>
-
-            </div>
+            <Platform isPop={false} platform={platforms} />
           </div>
         </div>
         <div className={`w-full fixed h-screen top-0 left-0 bg-black/25 flex items-center justify-center z-40 ${openTable ? 'scale-100' : 'scale-0'} duration-200`}>
@@ -307,6 +381,9 @@ function Body() {
         </div>
         <div className={`w-full fixed h-screen top-0 left-0 bg-black/25 flex items-center justify-center z-40 duration-200 ${showInv ? 'scale-100' : 'scale-0'}`}>
           <Invoice />
+        </div>
+        <div className={`w-full fixed h-screen top-0 left-0 bg-black/25 flex items-center justify-center z-40 duration-200 ${showPlatforms ? 'scale-100' : 'scale-0'}`}>
+          <Platform isPop={true} platform={topPlatforms} />
         </div>
     </section>
   )
