@@ -6,7 +6,7 @@ function Platform({ platform, isPop }) {
     const { display, setShowPlatforms } = useContext(ShareContext)
 
   return (
-    <div className={`w-full lg:w-[35%] overflow-x-auto ${display ? 'bg-sidebarBgDark border-borderColorDark' : 'bg-white border-borderColor'} p-2 border-2 rounded-md ${isPop ? 'h-2/3' : 'h-auto'}`}>
+    <div className={`${isPop ? 'w-[90%] lg:w-[35%]' : 'w-full lg:w-[35%]'} overflow-x-auto ${display ? 'bg-sidebarBgDark border-borderColorDark' : 'bg-white border-borderColor'} p-2 border-2 rounded-md ${isPop ? 'h-2/3' : 'h-auto'}`}>
         <div className='flex justify-between w-full items-center'>
             <h2 className='text-[16px] font-extrabold'>Top Platform</h2>
             { isPop ? <CloseCircle size='24' color='#ED544E' variant='Bulk' className='cursor-pointer hover:scale-110 duration-150' onClick={() => setShowPlatforms(false)} /> : <p className='text-main font-semibold cursor-pointer hover:scale-110 duration-150 text-[14px]' onClick={() => setShowPlatforms(true)}>See All</p>}

@@ -14,7 +14,7 @@ function Table({ table, isPop }) {
     }
 
   return (
-    <div className={`w-full lg:w-[65%] overflow-x-auto ${display ? 'bg-sidebarBgDark border-borderColorDark' : 'bg-white border-borderColor'} p-2 border-2 rounded-md ${isPop ? 'h-2/3' : 'h-auto'}`}>
+    <div className={`${isPop ? 'w-[90%] lg:w-[65%]' : 'w-full lg:w-[65%]'} overflow-x-auto ${display ? 'bg-sidebarBgDark border-borderColorDark' : 'bg-white border-borderColor'} p-2 border-2 rounded-md ${isPop ? 'h-2/3' : 'h-auto'}`}>
         <div className='flex justify-between w-full items-center'>
             <h2 className='text-[20px] font-extrabold'>Last Orders</h2>
             { isPop ? <CloseCircle size='24' color='#ED544E' variant='Bulk' className='cursor-pointer hover:scale-110 duration-150' onClick={() => setOpenTable(false)}/> : <p className='text-main font-semibold cursor-pointer hover:scale-110 duration-150' onClick={() => setOpenTable(true)}>See All</p>}

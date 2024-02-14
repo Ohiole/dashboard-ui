@@ -327,7 +327,7 @@ function Body() {
     },
 ]
 
-  const shortTable = tableData.slice(0, 5)
+  const shortTable = tableData.slice(0, 6)
 
   const platforms = topPlatforms.slice(0, 5)
     
@@ -338,10 +338,10 @@ function Body() {
         <div className='w-full'>
           <div className='flex flex-col w-full p-4 gap-4 xl:flex-row'>
             <div className={`w-full xl:w-[65%] overflow-x-auto ${display ? 'bg-sidebarBgDark border-borderColorDark' : 'bg-white border-borderColor'} p-2 border-2 rounded-md`}>
-              <div className='w-full flex justify-between'>
+              <div className='w-full flex justify-between sm:flex-row flex-col gap-3'>
                 <h2 className='text-[20px] font-extrabold'>Sales Trends</h2>
                 <div className='flex gap-4 items-center'>
-                  <p className={`text-[14px] font-medium ${ display ? 'text-white' : 'text-[#3A3F51]'}`}>Short by:</p>
+                  <p className={`text-[14px] font-medium ${ display ? 'text-white' : 'text-[#3A3F51]'}`}>Sort by:</p>
                   <div className={`flex items-center cursor-pointer border-2 ${display ? 'border-borderColorDark text-white' : 'border-borderColor text-[#3A3F51]'} text-[12px] p-2 rounded-full cursor-pointer gap-2 relative`} onClick={() => setIsToggleOpen(!isToggleOpen)}>
                     <p>{chartSpec}</p>
                     {
@@ -362,9 +362,10 @@ function Body() {
                 type="bar"
                 height="350"
                 className='cursor-pointer w-full'
+                width='870'
               />
             </div>
-            <div className='grid grid-cols-2 gap-4 w-full xl:w-[35%]'>
+            <div className='grid grid-cols-1 gap-4 w-full xl:w-[35%] sm:grid-cols-2'>
               <Card card='order'/>
               <Card card='refund' />
               <Card card='sales' />
