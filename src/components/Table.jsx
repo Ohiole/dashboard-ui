@@ -19,8 +19,8 @@ function Table({ table, isPop }) {
             <h2 className='text-[20px] font-extrabold'>Last Orders</h2>
             { isPop ? <CloseCircle size='24' color='#ED544E' variant='Bulk' className='cursor-pointer hover:scale-110 duration-150' onClick={() => setOpenTable(false)}/> : <p className='text-main font-semibold cursor-pointer hover:scale-110 duration-150' onClick={() => setOpenTable(true)}>See All</p>}
         </div>
-        <div className='w-full overflow-x-auto mt-4'>
-            <table className='w-full text-left'>
+        <div className='w-full mt-4'>
+            <table className='w-[700px] md:w-full overflow-x-scroll md:overflow-x-hidden text-left'>
                 <thead className='w-full'>
                     <tr className='text-[#9CA4AB]'>
                         <th className='font-medium py-4'>Name</th>

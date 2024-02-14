@@ -64,6 +64,9 @@ function Body() {
         chart: {
           id: 'custom-bar-chart',
           type: 'bar',
+          toolbar: {
+            show: false,
+          },
         },
         xaxis: {
           categories: chartInfo.categories,
