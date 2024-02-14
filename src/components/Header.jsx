@@ -2,20 +2,27 @@ import { ArrowDown2, ArrowUp2, Calendar, LockCircle, Menu, MessageEdit, Notifica
 import React, { useContext, useState } from 'react'
 import Pfp from '../assets/pexels-nappy-936119.jpg'
 import { ShareContext } from '../context/ShareContext'
+import ReactDatePicker from 'react-datepicker'
+import "react-datepicker/dist/react-datepicker.css";
 
 function Header() {
   const { display } = useContext(ShareContext)
 
   const [menu, setMenu] = useState(false)
   const [notif, setNotif] = useState(false)
+  const [newDate, setNewDate] = useState(false)
 
   const [nav, setNav] = useState(false)
+
+  const [startDate, setStartDate] = useState('Wed Nov 15 2023 17:45:55 GMT+0100 (West Africa Standard Time)');
 
   const openMenu = () => {
     setMenu(!menu)
 
     if (notif) {
       setNotif(false)
+    } else if (newDate) {
+      setNewDate(false)
     }
   }
 
@@ -24,9 +31,24 @@ function Header() {
 
     if (menu) {
       setMenu(false)
+    } else if (newDate) {
+      setNewDate(false)
     }
   }
 
+  const openDate = () => {
+    setNewDate(!newDate)
+
+    if (menu) {
+      setMenu(false)
+    } else if (notif) {
+      setNotif(false)
+    }
+  }
+
+  var dateProper = new Date(startDate)
+
+  var formattedDate = dateProper.toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})
   return (
     <header className={`flex justify-between items-center py-[18px] px-[20px] border-b-2 ${ display ? 'border-borderColorDark' : 'border-borderColor'} relative z-40`}>
         <h2 className={`${ display ? 'text-white' : 'text-text' } text-xl font-bold`}>Dashboard</h2>
@@ -37,12 +59,15 @@ function Header() {
           </div>
           <div className='flex lg:flex-row flex-col items-start lg:items-center gap-[20px] lg:w-auto w-full'>
             <div className='flex items-center gap-3 cursor-pointer'>
-              <Calendar variant='Linear' color={display ? '#FFF' : '#000'} />
-              <p className={`text-sm font-semibold ${display ? 'text-white' : 'text-text'}`}>November 15, 2023</p>
+              <Calendar variant='Linear' color={display ? '#FFF' : '#000'} onClick={() => openDate()}/>
+              <p className={`text-sm font-semibold ${display ? 'text-white' : 'text-text'}`}>{formattedDate}</p>
+              <div className={`absolute top-[170px] left-10 lg:fixed lg:top-[80px] lg:right-50 lg:left-auto ${ display ? 'bg-sidebarBgDark text-white' : 'bg-white text-text' } shadow-lg rounded-md py-2 px-3 w-[200px] flex items-center justify-center ${newDate ? 'scale-100' : 'scale-0'} duration-200 z-50`} >
+                <ReactDatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+              </div>
             </div>
             <div className={`cursor-pointer relative w-[40px] h-[40px] flex items-center justify-center rounded-full border-2 ${ display ? 'border-borderColorDark' : 'border-borderColor'} relative`} onClick={() => openNotif()}>
               <Notification variant='Linear' color={display ? '#FFF' : '#000'}  size='24'/>
-              <div className={`absolute top-[50px] left-0 ${ display ? 'bg-sidebarBgDark text-white' : 'bg-white text-text' } shadow-lg rounded-md py-2 px-3 w-[200px] h-[100px] flex items-center justify-center ${notif ? 'scale-100' : 'scale-0'} duration-200 z-50`}>
+              <div className={`absolute top-[50px] left-0 lg:fixed lg:top-[80px] lg:right-50 lg:left-auto ${ display ? 'bg-sidebarBgDark text-white' : 'bg-white text-text' } shadow-lg rounded-md py-2 px-3 w-[200px] h-[100px] flex items-center justify-center ${notif ? 'scale-100' : 'scale-0'} duration-200 z-50`} >
                 <p className='text-sm text-center'>No Notifications yet!</p>
               </div>
             </div>
@@ -53,7 +78,7 @@ function Header() {
                   <h2 className={` ${display ? 'text-white' : 'text-text'}`}>Justin Bergson</h2>
                   <p className='text-[#787486] text-sm'>Justin@gmail.com</p>
                 </div>
-                <div className={`absolute top-[50px] left-0 ${ display ? 'bg-sidebarBgDark text-white' : 'bg-white text-text' } shadow-lg rounded-md py-2 px-3 w-[200px] ${menu ? 'scale-100' : 'scale-0'} duration-200 z-50`}>
+                <div className={`absolute top-[50px] left-0 lg:fixed lg:top-[80px] lg:right-10 lg:left-auto ${ display ? 'bg-sidebarBgDark text-white' : 'bg-white text-text' } shadow-lg rounded-md py-2 px-3 w-[200px] ${menu ? 'scale-100' : 'scale-0'} duration-200 z-50`}>
                   <ul className='w-full'>
                     <li className='w-full flex mt-2 p-2 gap-2 items-center text-sm cursor-pointer duration-150'>
                       <User color={display ? '#FFF' : '#000'}  size='24' />
