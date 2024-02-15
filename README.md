@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Dashboard UI Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+The Dashboard Project is a responsive web application designed to provide a user-friendly interface for visualizing and managing key data. The dashboard offers a range of features to enhance user experience, including the ability to toggle between dark and light modes for personalized viewing.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+Dark and Light Mode: Users can switch between dark and light modes to suit their preference and reduce eye strain during different lighting conditions.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+User Settings: The dashboard includes a menu for users to conveniently update their details and passwords, ensuring a seamless and secure experience.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Interactive Bar Chart: A dynamic bar chart allows users to visualize data based on their preferred timeframes, including weekly, monthly, daily, or yearly views. Users can alter the chart to focus on specific data points.
 
-### `npm test`
+Short Version of Table: The dashboard presents a concise version of the table, showcasing last orders. Users can access the full table by clicking the "See All" button, displayed as a pop-up for a detailed overview.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Top Platforms Display: A dedicated section displays the top platforms, providing a snapshot of essential information. Users can explore further details by accessing the pop-up feature to view all relevant information.
 
-### `npm run build`
+## Demo
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Include links to a live demo or screenshots to showcase your dashboard.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technologies Used
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The Dashboard Project leverages the following technologies to deliver a dynamic and responsive user experience:
 
-### `npm run eject`
+- **ReactJS:** The core framework for building a modular and efficient user interface.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **ApexCharts:** A powerful charting library used to create interactive and visually appealing bar charts for data visualization.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **React-datepicker:** A React component for handling date picking functionality, enhancing user interaction with date-related data.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Iconsax:** A comprehensive library of icons used to enrich the dashboard's visual elements and provide a cohesive design.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Tailwind CSS:** A utility-first CSS framework that facilitates rapid and flexible styling. Tailwind CSS is employed to ensure a clean and consistent design across the entire dashboard.
 
-## Learn More
+These technologies work together seamlessly to create a modern and feature-rich dashboard, offering users an intuitive and efficient platform for data analysis and management.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Acknowledgements
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The Dashboard Project would like to express gratitude to the following individuals and communities whose contributions and support have been instrumental in the development of this project:
 
-### Code Splitting
+- **ReactJS Community:** A vibrant community of developers whose collective knowledge and resources have been invaluable in building the frontend of the dashboard.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **ApexCharts Developers:** The creators of ApexCharts for providing a robust and versatile charting library that enhances data visualization within the dashboard.
 
-### Analyzing the Bundle Size
+- **React-datepicker Contributors:** The developers behind React-datepicker, whose efforts have facilitated seamless date picking functionality and improved user experience.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **Iconsax Team:** Appreciation to Iconsax for offering a diverse collection of icons that have added visual appeal to the dashboard, contributing to a more engaging user interface.
 
-### Making a Progressive Web App
+- **Tailwind CSS Community:** Gratefulness to the Tailwind CSS community for creating a powerful utility-first CSS framework that streamlined the styling process and enhanced the overall design.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+These acknowledgments reflect my appreciation for the collective efforts that have played a pivotal role in the realization and success of the Dashboard Project.
 
-### Advanced Configuration
+## Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Twitter:** @_ojoo
 
-### Deployment
+- **LinkedIn:** Eboreime Ohiole
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **Instagram:** @ohiole__
 
-### `npm run build` fails to minify
+- **GitHub:** @Ohiole
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
