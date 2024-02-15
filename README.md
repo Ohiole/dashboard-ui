@@ -18,7 +18,7 @@ Top Platforms Display: A dedicated section displays the top platforms, providing
 
 ## Demo
 
-Include links to a live demo or screenshots to showcase your dashboard.
+- **Live Demo:** https://dashboard-ui-sepia.vercel.app/
 
 ## Technologies Used
 
