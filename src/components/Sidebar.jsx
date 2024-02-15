@@ -5,16 +5,18 @@ import { ShareContext } from '../context/ShareContext'
 
 function Sidebar() {
 
-    const { display, setDisplay } = useContext(ShareContext)
+    const { display, setDisplay, openSide, setOpenSide, nav } = useContext(ShareContext)
+
 
     // console.log(display);
 
   return (
-    <section className={`${display ? 'bg-sidebarBgDark' : 'bg-sidebarBg' } w-[80px] flex flex-col justify-between h-screen items-center py-[20px] sticky left-0 top-0 duration-300 border-r-2 ${ display ? 'border-borderColorDark' : 'border-borderColor'}`}>
+    <section className={`${display ? 'bg-sidebarBgDark' : 'bg-sidebarBg' } ${openSide ? 'opacity-100 pointer-events-auto': 'opacity-0 pointer-events-none'} sm:opacity-100 sm:pointer-events-auto w-[80px] flex flex-col justify-between h-screen items-center py-[20px] fixed sm:sticky left-0 top-0 duration-300 border-r-2 ${nav ? 'z-20' : 'z-40'} ${ display ? 'border-borderColorDark' : 'border-borderColor'} duration-200 ease-in-out`}>
+        
         <section className='w-full'>
             <nav className='w-full'>
                 <ul className='flex flex-col items-center gap-[16px] w-full'>
-                    <li>
+                    <li onClick={() => setOpenSide(false)}>
                         <img src={Logo} alt='Company Logo' className='cursor-pointer w-[40px] h-[40px] duration-200 ease-in-out hover:-translate-y-2'/>
                     </li>
                     <li className='group icons active'>

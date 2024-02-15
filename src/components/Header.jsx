@@ -6,13 +6,12 @@ import ReactDatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 
 function Header() {
-  const { display } = useContext(ShareContext)
+  const { display, nav, setNav } = useContext(ShareContext)
 
   const [menu, setMenu] = useState(false)
   const [notif, setNotif] = useState(false)
   const [newDate, setNewDate] = useState(false)
 
-  const [nav, setNav] = useState(false)
 
   const [startDate, setStartDate] = useState('Wed Nov 15 2023 17:45:55 GMT+0100 (West Africa Standard Time)');
 
@@ -46,11 +45,12 @@ function Header() {
     }
   }
 
+
   var dateProper = new Date(startDate)
 
   var formattedDate = dateProper.toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})
   return (
-    <header className={`flex justify-between items-center py-[18px] px-[20px] border-b-2 ${ display ? 'border-borderColorDark' : 'border-borderColor'} relative z-40`}>
+    <header className={`flex justify-between items-center py-[18px] px-[20px] border-b-2 ${ display ? 'border-borderColorDark' : 'border-borderColor'} relative z-30`}>
         <h2 className={`${ display ? 'text-white' : 'text-text' } text-xl font-bold`}>Dashboard</h2>
         <section className={`flex flex-col lg:flex-row items-start lg:py-0 py-16 lg:px-0 md:px-8 px-2 lg:items-center gap-5 absolute lg:relative h-screen lg:h-auto ${display ? 'bg-sidebarBgDark border-borderColorDark': 'bg-sidebarBg border-borderColor'} border-l-2 lg:border-l-0 lg:bg-transparent right-0 top-0 ${ nav ? 'md:w-1/2 w-full opacity-100' : 'w-0 overflow-hidden lg:opacity-100 opacity-0'} lg:w-auto duration-300 z-40`}>
           <div className={`flex gap-2 w-full lg:w-[300px] border-2 ${ display ? 'border-borderColorDark' : 'border-borderColor'} p-[10px] rounded-3xl items-center`}>
